@@ -1,22 +1,27 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BulletEmitter : MonoBehaviour
+namespace MultiplayerDemo
 {
-    [SerializeField]
-    private Bullet _bulletPrefab;
-
-    void Start()
+    public class BulletEmitter : MonoBehaviour
     {
-        StartCoroutine(CreateBulletRoutine());   
-    }
+        [SerializeField]
+        private Bullet _bulletPrefab;
 
-    private IEnumerator CreateBulletRoutine() {
-        while(this.isActiveAndEnabled) {
-            var bullet = GameObject.Instantiate<Bullet>(_bulletPrefab, transform);
-            bullet.transform.localPosition = Vector3.zero;
-            bullet.transform.localRotation = transform.localRotation;
-            yield return new WaitForSeconds(0.3f);
+        void Start()
+        {
+            StartCoroutine(CreateBulletRoutine());
+        }
+
+        private IEnumerator CreateBulletRoutine()
+        {
+            while (this.isActiveAndEnabled)
+            {
+                var bullet = GameObject.Instantiate<Bullet>(_bulletPrefab, transform);
+                bullet.transform.localPosition = Vector3.zero;
+                bullet.transform.localRotation = transform.localRotation;
+                yield return new WaitForSeconds(0.3f);
+            }
         }
     }
 }
