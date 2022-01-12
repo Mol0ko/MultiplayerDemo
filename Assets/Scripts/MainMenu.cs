@@ -39,12 +39,10 @@ namespace MultiplayerDemo
 
         public override void OnConnectedToMaster() {
             DebugHelper.Log("OnConnectedToMaster");
-            base.OnConnectedToMaster();
         }
 
         public override void OnJoinedRoom() {
             PhotonNetwork.LoadLevel("MainScene");
-            base.OnJoinedRoom();
         }
     }
 }
