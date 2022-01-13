@@ -120,7 +120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6961629112857969153}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.6, y: 0.60500014, z: 0.277}
+  m_LocalPosition: {x: 0.461, y: 0.60500014, z: 0.277}
   m_LocalScale: {x: 0.19145761, y: 1, z: 0.21332535}
   m_Children: []
   m_Father: {fileID: 6961629112960333090}
@@ -317,6 +317,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 400
   _rigidBody: {fileID: 6961629112960333092}
+  _gun: {fileID: 346243922819983004}
+  _bulletPrefab: {fileID: -6365204508794108314, guid: 1d8876a79ba7d4e29a826797234fe3f2,
+    type: 3}
 --- !u!114 &8600378649502820606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,7 +338,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 2377897140867910099}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -551,7 +555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 346243922819983004}
-  - component: {fileID: 6915107068785303445}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -567,23 +570,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8723497995247049604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.591, y: 0.59, z: 0.937}
+  m_LocalPosition: {x: 0.367, y: 0.59, z: 0.937}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6961629112960333090}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6915107068785303445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8723497995247049604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f6dad2f65ae4157937b0a49c4a9a85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: -6365204508794108314, guid: 1d8876a79ba7d4e29a826797234fe3f2,
-    type: 3}

@@ -6,7 +6,7 @@ namespace MultiplayerDemo
     {
         private void Update()
         {
-            transform.localPosition += Vector3.forward * 5f * Time.deltaTime;
+            transform.position += transform.forward * 7f * Time.deltaTime;
         }
     }
 }
