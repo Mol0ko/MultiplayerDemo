@@ -18,18 +18,27 @@ namespace MultiplayerDemo
             PhotonNetwork.ConnectUsingSettings();
         }
 
-        public void CreateRoom() {
-            var roomOptions = new RoomOptions() {
+        public void CreateRoom()
+        {
+            var roomOptions = new RoomOptions()
+            {
                 MaxPlayers = 2
             };
-            PhotonNetwork.CreateRoom("room1", roomOptions);
+
+            if (PhotonNetwork.CurrentRoom == null
+                || PhotonNetwork.CurrentRoom?.Name != "room1")
+                PhotonNetwork.CreateRoom("room1", roomOptions);
+            else
+                PhotonNetwork.JoinRoom("room1");
         }
 
-        public void JoinRoom() {
+        public void JoinRoom()
+        {
             PhotonNetwork.JoinRoom("room1");
         }
 
-        public void Quit() {
+        public void Quit()
+        {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -37,11 +46,13 @@ namespace MultiplayerDemo
 #endif
         }
 
-        public override void OnConnectedToMaster() {
+        public override void OnConnectedToMaster()
+        {
             DebugHelper.Log("OnConnectedToMaster");
         }
 
-        public override void OnJoinedRoom() {
+        public override void OnJoinedRoom()
+        {
             PhotonNetwork.LoadLevel("MainScene");
         }
     }

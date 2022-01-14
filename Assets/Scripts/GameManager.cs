@@ -1,13 +1,24 @@
-﻿using Photon.Pun;
+﻿using System.Collections;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace MultiplayerDemo
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
+        [SerializeField]
+        private CameraFollowing _camera;
+        [SerializeField]
+        private GameObject _gameOverBanner;
+        [SerializeField]
+        private Text _winner;
+
         private PlayerController _player1;
         private PlayerController _player2;
+
+        public bool GameOvered = false;
 
         private void Start()
         {
@@ -35,6 +46,27 @@ namespace MultiplayerDemo
                 _player1.Target = _player2.transform;
                 _player2.Target = _player1.transform;
             }
+
+            if (player.IsMe)
+                _camera.Target = player.transform;
+        }
+
+        public void GameOver(PlayerController looser)
+        {
+            GameOvered = true;
+            if (looser.name.Contains("1"))
+                _winner.text = "Player2";
+            else if (looser.name.Contains("2"))
+                _winner.text = "Player1";
+            _gameOverBanner.SetActive(true);
+            StartCoroutine(ShowMenuAfterDelay());
+        }
+
+        private IEnumerator ShowMenuAfterDelay()
+        {
+            yield return new WaitForSeconds(4);
+            PhotonNetwork.LeaveRoom();
+            SceneManager.LoadScene("Menu");
         }
 
         public void OnQuit()
